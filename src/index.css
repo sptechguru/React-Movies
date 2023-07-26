@@ -12,7 +12,8 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 45px; /* Adjust the height as needed */
+    /* height: 50px;  */
+    /* Adjust the height as needed */
 }
 
 .bgs{
@@ -29,6 +30,7 @@ footer {
 
 #header .animated {
     animation:up-down 2s ease-in-out infinite alternate-reverse both;
+
 }
 
 @-webkit-keyframes up-down{
@@ -72,7 +74,7 @@ footer {
 
 #header img{
     width: 100%;
-    /* height:75vh !important; */
+    height:85vh !important;
 }
 
 

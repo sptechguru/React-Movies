@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 const Common = (props) => {
   return (
-    <section className="container max-w-[1320px] grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12 gap-4 mx-auto" id="header">
+    <section className="container max-w-[1320px] grid lg:grid-cols-12 md:grid-cols-12 sm:grid-cols-12  py-4 gap-4 mx-auto" id="header">
       <div className="col-span-6 header_img ">
         <img
           className="animated mx-auto"

@@ -49,7 +49,7 @@ const Movies_Search = () => {
     };
 
     const filterMovies = (search) => {
-        console.log("seach filter", search)
+        // console.log("seach filter", search)
         let sortedMovies = [];
         switch (search) {
             case 'ReleaseYear':
@@ -76,7 +76,7 @@ const Movies_Search = () => {
         <>
             <div className="text-center">{loading ? <SpinnerBox /> : null}</div>
 
-            <div className="container max-w-[1320px] mx-auto grid lg:grid-cols-3 md:grid-cols-3 gap-6 py-5">
+            <div className="container max-w-[1320px]  grid lg:grid-cols-3 md:grid-cols-3 gap-6 py-5 mx-5">
                 <div >
                     <NavLink to="/movie">
                         <button className="bg-black hover:bg-black-700 text-white font-bold py-2 px-4 rounded">Back</button>
@@ -84,7 +84,7 @@ const Movies_Search = () => {
                 </div>
 
                 <div>
-                    <h5 className='text-2xl'>Your Search Results For <span className="text-purple-60 font-semibold text-uppercase"> &quot;{searchTerm} &quot;</span></h5>
+                    <h5 className='text-2xl'>Your Search Results For <span className="text-blue-800 font-semibold text-uppercase"> &quot;{searchTerm} &quot;</span></h5>
                 </div>
 
                 <div>
@@ -97,7 +97,7 @@ const Movies_Search = () => {
                     </select>
                 </div>
             </div>
-
+{/* 
             <div className="poster">
                 <Carousel
                     showThumbs={false}
@@ -127,12 +127,12 @@ const Movies_Search = () => {
                         ))
                     }
                 </Carousel>
-            </div>
+            </div> */}
             <br />
             
         <h1 className="text-3xl font-semibold text-gray-900 dark:text-black py-2 mx-3 py-2">
         Similar Movies </h1>
-            <div className="container max-w-[1320px] mx-auto grid lg:grid-cols-6 md:grid-cols-6 gap-2">
+            <div className="container max-w-[1320px] mx-auto grid lg:grid-cols-6 md:grid-cols-6 gap-5">
                 {searchmovieData.map((props, index) => {
                     return (
                         <MovieCard

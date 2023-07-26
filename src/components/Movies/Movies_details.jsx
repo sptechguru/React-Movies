@@ -60,16 +60,16 @@ const MoviesDetails = () => {
     <>
       <div className="text-center">{loading ? <SpinnerBox /> : null}</div>
       <div className="movie">
-        <div className="movie__intro">
+        <div className="movie__intro overflow-hidden">
           <a href={TMDBApi.image_BaseUrl + movieData.backdrop_path} target="_blank">
-            <img src={TMDBApi.image_BaseUrl + movieData.backdrop_path} className="movie__backdrop" alt={TMDBApi.image_BaseUrl + movieData.backdrop_path} />
+            <img src={TMDBApi.image_BaseUrl + movieData.backdrop_path} className="movie__backdrop hover:scale-125 duration-1000" alt={TMDBApi.image_BaseUrl + movieData.backdrop_path} />
           </a>
         </div>
         <div className="movie__detail">
           <div className="movie__detailLeft">
-            <div className="movie__posterBox">
+            <div className="movie__posterBox overflow-hidden">
               <a href={TMDBApi.image_BaseUrl + movieData.poster_path} target="_blank">
-                <img src={TMDBApi.image_BaseUrl + movieData.poster_path} className="movie__poster" alt={TMDBApi.image_BaseUrl + movieData.poster_path} />
+                <img src={TMDBApi.image_BaseUrl + movieData.poster_path} className="movie__poster hover:scale-125 duration-1000" alt={TMDBApi.image_BaseUrl + movieData.poster_path} />
               </a>
             </div>
           </div>

@@ -5,7 +5,7 @@ import "../css/movies.css";
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const  CarsuelSlide = (data) => {
-    console.log('carsuel',data);
+    // console.log('carsuel',data);
   return (
     <>
         <div className="poster">

@@ -28,7 +28,7 @@ const Prodcuts_details = () => {
         try {
             setLoading(true);
             const response = await Api_axio.get(ENDPOINTS.PRODCUTS + "/" + user_Id);
-            console.log(response.data);
+            // console.log(response.data);
             setProdcuts(response.data);
             dispatch(selectedProdcutData(response.data));
             setLoading(false);

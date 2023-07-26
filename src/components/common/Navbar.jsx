@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Clock from "./Clock";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import SearchResults from "../Movies/common/SearchResults";
+import { useAuth0 } from '@auth0/auth0-react';
+
 
 const Navbar = () => {
 
@@ -10,7 +11,10 @@ const Navbar = () => {
   let [searchText, setSearchTerm] = useState('Harry');
   const history = useHistory();
   const [search, setSerach] = useState(false);
+  // Add Loigin FunctionLity
+  const { isLoading, isAuthenticated, error, user, loginWithRedirect, logout } = useAuth0();
 
+  // console.log("profile data.........",user)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,11 +46,11 @@ const Navbar = () => {
                 </svg>
               </button>
             </div>
-            <div className="flex flex-1 items-center justify-between text-center">
+            <div className="flex flex-1 space-x-0 justify-between">
               <NavLink to="/">
                 <div className="flex flex-shrink-0 items-center">
-                  <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
-                  <h1 className="text-white font-semibold text-1xl"> &nbsp; &nbsp;SPTECH  REACT</h1>
+                  <img className="h-10 w-auto" src="https://res.cloudinary.com/zoominfo-com/image/upload/w_140,h_140,c_fit/sptechusa.com" alt="Your Company" />
+                  <h1 className="text-white font-semibold lg:text-2xl md:text-1xl sm:xxl"> &nbsp; &nbsp;SPTECH  REACT</h1>
                 </div>
               </NavLink>
               <div className="hidden sm:ml-6 sm:block mx-auto">
@@ -56,14 +60,29 @@ const Navbar = () => {
                   {/* <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/search">Search <span className="sr-only">(current)</span></NavLink> */}
                   {/* <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/service">Prodcuts <span className="sr-only">(current)</span></NavLink> */}
                   <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/contact">Contact <span className="sr-only">(current)</span></NavLink>
-                  <a onClick={handleMovies} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movie <span className="sr-only">(current)</span></a>
 
-                  { search ?
-                   <SearchResults />
-                    : null}
-                  {/* <NavLink to="/login" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Login</NavLink>
-                  <NavLink to="/signup" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Signup</NavLink> */}
-                  <Clock />
+                  {
+                    isAuthenticated ?
+                      <>
+                        <a onClick={handleMovies} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium mx-2">Movie <span className="sr-only">(current)</span></a>
+                        {search ? <SearchResults /> : null}
+                      </>
+                      : null
+                  }
+
+                  {
+                    isAuthenticated ? <span>
+                      <span className="text-white font-semibold lg:text-xxl md:text-1xxl sm:text-xxl mx-2 text-left">
+                        <i class="fa fa-user animate-bounce" aria-hidden="true"></i>
+                        &nbsp;Welcome :{user.name}</span>
+                      <button onClick={() => logout({ returnTo: window.location.origin })}
+                        className="bg-red-500 text-white font-semibold rounded-md px-3 py-2 text-sm font-medium" aria-current="page">
+                        <i class="fa fa-power-off animate-bounce text-white" aria-hidden="true"></i>
+                        &nbsp; Logout</button>
+                    </span>
+
+                      : <button onClick={() => loginWithRedirect()} className="bg-blue-800 text-white font-semibold rounded-md px-3 py-2 text-sm font-medium mx-3" aria-current="page">Login</button>
+                  }
 
                 </div>
               </div>
@@ -76,17 +95,29 @@ const Navbar = () => {
           <div className="space-y-1 px-2 pb-3 pt-2">
             <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/">Home <span className="sr-only">(current)</span></NavLink>
             <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/about">About <span className="sr-only">(current)</span></NavLink>
-            {/* <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/search">Search <span className="sr-only">(current)</span></NavLink> */}
-            <a onClick={handleMovies} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Movie <span className="sr-only">(current)</span></a>
-            {/* <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/service">Prodcuts <span className="sr-only">(current)</span></NavLink> */}
             <NavLink className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" to="/contact">Contact <span className="sr-only">(current)</span></NavLink>
-            {search ?
-           <SearchResults />
-              : null}
-            {/* <NavLink to="/login" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Login</NavLink>
-            <NavLink to="/signup" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Signup</NavLink>
-             */}
-            <Clock />
+            {
+              isAuthenticated ?
+                <>
+                  <a onClick={handleMovies} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium mx-2">Movie <span className="sr-only">(current)</span></a>
+                  {search ? <SearchResults /> : null}
+                </>
+                : null
+            }
+
+            {
+              isAuthenticated ? <span>
+                <span className="text-white font-semibold lg:text-xxl md:text-1xxl sm:text-xxl mx-2 text-left">
+                  <i class="fa fa-user animate-bounce" aria-hidden="true"></i>
+                  &nbsp;Welcome :{user.name}</span>
+                <button onClick={() => logout({ returnTo: window.location.origin })}
+                  className="bg-red-500 text-white font-semibold rounded-md px-3 py-2 text-sm font-medium" aria-current="page">
+                  <i class="fa fa-power-off animate-bounce text-white" aria-hidden="true"></i>
+                  &nbsp; Logout</button>
+              </span>
+
+                : <button onClick={() => loginWithRedirect()} className="bg-blue-800 text-white font-semibold rounded-md px-3 py-2 text-sm font-medium mx-3" aria-current="page">Login</button>
+            }
 
           </div>
         </div>

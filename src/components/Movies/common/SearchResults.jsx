@@ -33,7 +33,7 @@ const SearchResults = () => {
         try {
             setLoading(true);
             const response = await Api_axio_Movies.get(`${TMDBApi.apiBaseUrl}/genre/movie/list?api_key=${TMDBApi.apiMovieKey2}`);
-            console.log('search Results Menu Movies??????..', response.data.genres);
+            // console.log('search Results Menu Movies??????..', response.data.genres);
             setSerachList(response.data.genres);
             // dispatch(searchMovies(response.data));
             setLoading(false);

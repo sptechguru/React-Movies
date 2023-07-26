@@ -13,11 +13,11 @@ const Clock = () => {
   setInterval(UpdateTime, 1000);
 
   return (
-    <div className="pt-2">
-      <h4 className="text-right mx-10">
-        <span className="bg-red-100 text-white-800 text-1xl text-white font-semibold mt-2 px-2.5 py-2 rounded dark:bg-red-900 dark:text-white-300 mx-2 py-2 ">{ctime}</span>{" "}
+    <>
+      <h4 className="text-right">
+        <span className="outline outline-offset-1 outline-2 outline-red-800 text-white-800 text-1xl text-white font-semibold mt-2 px-2.5 py-2 rounded dark:bg-black-600 dark:text-white-300 mx-2 py-2 ">{ctime}</span>{" "}
       </h4>
-      </div>
+    </>
   );
 };
 

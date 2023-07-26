@@ -32,15 +32,15 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/search" component={Search} />
-          <Route exact path="/service" component={Services} />
+          {/* <Route exact path="/service" component={Services} /> */}
           <Route exact path="/contact" component={Contact} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
+          {/* <Route exact path="/login" component={Login} /> */}
+          {/* <Route exact path="/signup" component={Signup} /> */}
           <Route exact path="/movie" component={Movies} />
-          <Route path="/products-details/:id" component={Prodcuts_details} />
+          {/* <Route path="/products-details/:id" component={Prodcuts_details} /> */}
           <Route path="/movies-details/:id" component={MoviesDetails} />
           <Route path="/search-details/:search" component={Movies_Search} />
-          {/* <Redirect to="/" /> */}
+          <Redirect to="/" />
         </Switch>
         <Footer />
       </BrowserRouter>
