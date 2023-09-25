@@ -13,7 +13,7 @@ const MoviesDetails = () => {
   const getIdFromUrl = () => {
     const path = window.location.pathname;
     const id = path.substring(path.lastIndexOf("/") + 1);
-    console.log("movies id ", id);
+    // console.log("movies id ", id);
     return id;
   };
   const [movieData, setMoviesDetails] = useState([]);

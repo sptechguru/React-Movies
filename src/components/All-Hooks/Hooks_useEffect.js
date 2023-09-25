@@ -29,18 +29,18 @@ const Hooks_useEffect = () => {
 
 
     useEffect(() => {
-        console.log("use Effet called only one time when depedcy is update when called multiple");
+        // console.log("use Effet called only one time when depedcy is update when called multiple");
         window.addEventListener('resize', () => {
             setCrenWidth(window.innerWidth);
         });
-        console.log('Count changes for Random..');
+        // console.log('Count changes for Random..');
         // setCount({
         //     num:500,   by default id passed 
         //     id:'S0112',
         // })
         return () =>{     // unMounting useEffectHooks 
             window.removeEventListener('resize');
-            console.log('Count changes for return..');
+            // console.log('Count changes for return..');
         }
 
     }, [count]);
