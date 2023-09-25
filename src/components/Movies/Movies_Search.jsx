@@ -32,7 +32,7 @@ const Movies_Search = () => {
         return () => {
             // dispatch(removeProdcut());
         }
-    }, []);
+    }, [searchTerm]);
 
     const getSearchMovies = async () => {
         try {

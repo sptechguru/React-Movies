@@ -16,7 +16,7 @@ const SearchResults = () => {
         e.preventDefault();
         if (searchText) {
             // console.log("seachterm", searchText);
-            history.push(`search-details/${searchText}`);
+            history.push(`/search-details/${searchText}`);
         }
     }
     const handleMovies = () => {
@@ -26,7 +26,7 @@ const SearchResults = () => {
 
     useEffect(() => {
         getSearchMoviesName();
-    }, []);
+    }, [searchText]);
 
 
     const getSearchMoviesName = async () => {
