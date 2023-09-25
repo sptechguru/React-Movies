@@ -13,7 +13,7 @@ const MoviesDetails = () => {
   const getIdFromUrl = () => {
     const path = window.location.pathname;
     const id = path.substring(path.lastIndexOf("/") + 1);
-    // console.log("movies id ", id);
+    console.log("movies id ", id);
     return id;
   };
   const [movieData, setMoviesDetails] = useState([]);
@@ -22,11 +22,13 @@ const MoviesDetails = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const user_Id = getIdFromUrl();
+  // console.log("movies id render updates  ", user_Id);
+
 
   useEffect(() => {
     getMoviesDetatilsId();
     getSimilarMovies();
-  }, []);
+  }, [user_Id]);
 
   const getMoviesDetatilsId = async () => {
     try {

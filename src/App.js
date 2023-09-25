@@ -17,6 +17,8 @@ import Prodcuts_details from './components/common/Prodcuts_details';
 import Movies from './components/Movies/Movies';
 import MoviesDetails from './components/Movies/Movies_details';
 import Movies_Search from './components/Movies/Movies_Search';
+import View_Hoc from './components/HOC/View_Hoc';
+import All_hooks from './components/All-Hooks/All_hooks';
 
 function App() {
   return (
@@ -40,6 +42,9 @@ function App() {
           {/* <Route path="/products-details/:id" component={Prodcuts_details} /> */}
           <Route path="/movies-details/:id" component={MoviesDetails} />
           <Route path="/search-details/:search" component={Movies_Search} />
+          <Route exact path="/hoc" component={View_Hoc} />
+          <Route exact path="/hooks" component={All_hooks} />
+
           <Redirect to="/" />
         </Switch>
         <Footer />
